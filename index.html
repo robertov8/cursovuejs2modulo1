@@ -7,9 +7,8 @@
 
     <body>
         <div id="app">
-            <p>{{ contador }}</p>
-            <p>{{ contador > 10 ? 'Maior do que 10' : 'Menor do que 10' }}</p>
-            <button v-on:click="somar">Somar 1</button>
+            <p>{{ titulo }}</p>
+            <input type="text" v-model="titulo">
         </div>
     </body>
 
@@ -19,7 +18,7 @@
         new Vue({
             el: '#app',
             data: {
-                contador: 0,
+                titulo: 'Usando VueJS!',
             },
             methods: {
                 somar() {
