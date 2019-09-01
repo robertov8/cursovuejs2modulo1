@@ -7,16 +7,20 @@
 
     <body>
         <div id="app">
-            <button v-on:click="aumentar">Aumentar</button>
-            <button v-on:click="contador2++">Aumentar 2</button>
-            <button v-on:click="diminuir">Diminuir</button>
+            <button @click="aumentar">Aumentar</button>
+            <button @click="contador2++">Aumentar 2</button>
+            <button @click="diminuir">Diminuir</button>
 
             <hr>
 
-            <button v-on:click="iniciarContador">Iniciar Contador</button>
-            <button v-on:click="pararContador">Parar Contador</button>
+            <button @click="iniciarContador">Iniciar Contador</button>
+            <button @click="pararContador">Parar Contador</button>
+
+            <hr>
 
             <p>Contador: {{ contador }} | {{ contador2 }}</p>
+            <input type="text" :value="contador" />
+            <input type="text" :value="contador2" />
             <p>Resultado: {{ resultado }}</p>
         </div>
     </body>
