@@ -5,7 +5,7 @@
         <title>Curso - Vue</title>
 
         <style>
-            #app {
+            .caixas {
                 display: flex;
                 justify-content: space-around;
             }
@@ -24,14 +24,26 @@
             .c3 {
                 background-color: blue;
             }
+            .girar45 {
+                transform: rotate(45deg);
+            }
+            .girar0 {
+                transform: rotate(0deg);
+            }
         </style>
     </head>
 
     <body>
         <div id="app">
-            <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
-            <div class="demo" :class="estilo1"></div>
-            <div class="demo" :class="estilo1"></div>
+            <div class="caixas">
+                <div class="demo" :class="estilo1" @click="mudar"></div>
+                <div class="demo" :class="[estilo1, 'c2']"></div>
+                <div class="demo" :class="[estilo1, estiloCSS, {girar0: aplicarGirar}]"></div>
+            </div>
+
+            <hr>
+
+            <input type="text" v-model="estiloCSS">
         </div>
     </body>
 
@@ -42,12 +54,22 @@
             el: '#app',
             data: {
                 aplicarC1: false,
+                estiloCSS: 'c3',
+                aplicarGirar: false
+            },
+            methods: {
+                mudar() {
+                    this.aplicarC1 = !this.aplicarC1;
+                    this.aplicarGirar = !this.aplicarGirar;
+                }
             },
             computed: {
                 estilo1() {
                     return {
                         c1: this.aplicarC1,
-                        c2: !this.aplicarC1
+                        c2: !this.aplicarC1,
+                        girar0: this.aplicarGirar,
+                        girar45: !this.aplicarGirar,
                     };
                 }
             }
