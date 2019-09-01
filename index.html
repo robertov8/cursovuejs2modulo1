@@ -5,46 +5,17 @@
         <title>Curso - Vue</title>
 
         <style>
-            .caixas {
-                display: flex;
-                justify-content: space-around;
-            }
-            .demo {
-                width: 100px;
-                height: 100px;
-                background-color: gray;
-
-            }
-            .c1 {
-                background-color: red;
-            }
-            .c2 {
-                background-color: green;
-            }
-            .c3 {
-                background-color: blue;
-            }
-            .girar45 {
-                transform: rotate(45deg);
-            }
-            .girar0 {
-                transform: rotate(0deg);
-            }
         </style>
     </head>
 
     <body>
         <div id="app">
-            <div class="caixas">
-                <div class="demo" :style="{backgroundColor: cor}"></div>
-                <div class="demo" :style="meuEstilo"></div>
-                <div class="demo"></div>
-            </div>
+            <p v-if="logado">Usuário Logado: {{ nome }}</p>
+            <p v-else>Nenhum usuário logado</p>
 
-            <hr>
-
-            <input type="text" v-model="cor">
-            <input type="text" v-model="largura">
+            <button @click="logado = !logado">
+                {{ logado ? 'Sair' : 'Entrar' }}
+            </button>
         </div>
     </body>
 
@@ -54,16 +25,8 @@
         new Vue({
             el: '#app',
             data: {
-                cor: 'red',
-                largura: 100
-            },
-            computed: {
-                meuEstilo() {
-                    return {
-                        backgroundColor: this.cor,
-                        width: `${this.largura}px`
-                    };
-                }
+                nome: 'Maria',
+                logado: false
             }
         });
     </script>
