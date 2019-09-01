@@ -15,6 +15,10 @@
             </p>
 
             <a v-on:click.prevent="" href="https://google.com.br">Google</a>
+
+            <hr>
+
+            <input type="text" v-on:keyup.enter.alt="exibirAlerta">
         </div>
     </body>
 
@@ -36,6 +40,9 @@
                 atualizarXY(e) {
                     this.x = e.screenX;
                     this.y = e.screenY;
+                },
+                exibirAlerta() {
+                    alert('Estou de alertando!');
                 }
             }
         });
