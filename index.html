@@ -7,8 +7,17 @@
 
     <body>
         <div id="app">
-            <p>{{ titulo }}</p>
-            <input type="text" v-model="titulo">
+            <button v-on:click="aumentar">Aumentar</button>
+            <button v-on:click="contador2++">Aumentar 2</button>
+            <button v-on:click="diminuir">Diminuir</button>
+
+            <hr>
+
+            <button v-on:click="iniciarContador">Iniciar Contador</button>
+            <button v-on:click="pararContador">Parar Contador</button>
+
+            <p>Contador: {{ contador }} | {{ contador2 }}</p>
+            <p>Resultado: {{ resultado }}</p>
         </div>
     </body>
 
@@ -18,13 +27,33 @@
         new Vue({
             el: '#app',
             data: {
-                titulo: 'Usando VueJS!',
+                contadorAutomatico: '',
+                contador: 0,
+                contador2: 0,
             },
             methods: {
-                somar() {
+                aumentar() {
                     this.contador++;
                 },
+                diminuir() {
+                    this.contador--;
+                },
+                iniciarContador() {
+                    this.contadorAutomatico = setInterval(() => {
+                        this.contador++;
+                    }, 1000);
+                },
+                pararContador() {
+                    clearInterval(this.contadorAutomatico);
+                }
             },
+            computed: {
+                resultado() {
+                    console.log('metodo computed chamando o contador...');
+                    return this.contador >= 5 ?
+                        'Maior ou igual a 5' : 'Menor que 5';
+                },
+            }
         });
     </script>
 </html>
