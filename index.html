@@ -11,7 +11,7 @@
     <body>
         <div id="app">
             <ul>
-                <li v-for="cor in cores">{{ cor}}</li>
+                <li v-for="(cor, i) in cores">{{ i + 1 }} - {{ cor }}</li>
             </ul>
         </div>
     </body>
