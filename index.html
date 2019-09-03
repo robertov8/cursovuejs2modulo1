@@ -9,32 +9,14 @@
     </head>
 
     <body>
-        <div id="app">
-            <ul>
-                <li v-for="(cor, i) in cores" :key="cor">{{ i + 1 }} - {{ cor }}</li>
-            </ul>
-            <button @click="cores.push('branca')">Adicionar</button>
+        <div id="app1">
+            {{ titulo1 }}
+            <button @click="alterar">Alterar</button>
+        </div>
 
-            <hr>
-
-            <template v-for="(cor, i) in cores">
-                <h2>{{ cor }}</h2>
-                <p>{{ i }}</p>
-            </template>
-
-            <hr>
-
-            <ul>
-                <li v-for="pessoa in pessoas">
-                    <div v-for="(valor, key, index) in pessoa">
-                        {{ index + 1 }} - {{ key }} = {{ valor }}
-                    </div>
-                </li>
-            </ul>
-
-            <hr>
-
-            <span v-for="n in 10"> {{ n }} </span>
+        <div id="app2">
+            {{ titulo2 }}
+            <button @click="alterar">Alterar</button>
         </div>
     </body>
 
@@ -42,13 +24,26 @@
 
     <script>
         new Vue({
-            el: '#app',
+            el: '#app1',
             data: {
-                cores: ['vermelho', 'verde', 'amarelo', 'azul'],
-                pessoas: [
-                    { nome: 'Ana', idade: 26, peso: 59 },
-                    { nome: 'Guilherme', idade: 22, peso: 89 },
-                ]
+                titulo1: 'Teste 1'
+            },
+            methods: {
+                alterar() {
+                    this.titulo1 += '!!!!';
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app2',
+            data: {
+                titulo2: 'Teste 2'
+            },
+            methods: {
+                alterar() {
+                    this.titulo2 += '!!!!';
+                }
             }
         });
     </script>
