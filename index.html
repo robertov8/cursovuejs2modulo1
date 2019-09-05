@@ -10,18 +10,24 @@
 
     <body>
         <div id="app">
-            {{ titulo }}
-            <button @click="alterar">Alterar</button>
+            <comp></comp>
+            <comp></comp>
+            <comp></comp>
         </div>
     </body>
 
     <script src="node_modules/vue/dist/vue.js"></script>
 
     <script>
-        const vm = new Vue({
-            el: '#app',
-            data: {
-                titulo: 'Teste 1'
+        Vue.component('comp', {
+            template: `
+                <div>
+                    {{ titulo }}
+                    <button @click="alterar">Alterar</button>
+                </div>
+            `,
+            data() {
+                return { titulo: 'Teste 1' };
             },
             methods: {
                 alterar() {
@@ -30,7 +36,9 @@
             }
         });
 
-        vm.novaInfo = 'nova';
-        console.log(vm.novaInfo);
+        const vm = new Vue({
+            el: '#app',
+
+        });
     </script>
 </html>
