@@ -6,7 +6,7 @@
 
         <hr>
         <div class="componentes">
-            <app-usuario-info />
+            <app-usuario-info :nome="nome" />
             <app-usuario-editar />
         </div>
     </div>
@@ -18,7 +18,7 @@ import AppUsuarioEditar from './UsuarioEditar'
 
 export default {
     data() {
-        return { nome: 'Pedro' };
+        return { nome: 'Pedro Silva' };
     },
     methods: {
         alterarNome() {
