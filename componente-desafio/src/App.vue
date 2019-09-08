@@ -17,11 +17,6 @@
     import Footer from "@/components/template/Footer";
 
     export default {
-        components: {
-            Footer,
-            NavigationDrawer,
-            Toolbar,
-            Content
-        }
+        components: { Footer, NavigationDrawer, Toolbar, Content }
     }
 </script>
