@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         alterarNome() {
-            this.nome = 'Ana';
+            this.nome = 'Ana Silva';
         }
     },
     components: { AppUsuarioInfo, AppUsuarioEditar }
