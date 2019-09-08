@@ -11,10 +11,10 @@
 </template>
 
 <script>
-    import NavigationDrawer from "./NavigationDrawer";
-    import Toolbar from "../Toolbar";
-    import Content from "./Content";
-    import Footer from "./Footer";
+    import NavigationDrawer from "@/components/template/NavigationDrawer";
+    import Toolbar from "@/components/template/Toolbar";
+    import Content from "@/components/widgets/Content";
+    import Footer from "@/components/template/Footer";
 
     export default {
         components: {
