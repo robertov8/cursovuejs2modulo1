@@ -10,19 +10,32 @@
 
     <body>
         <div id="app">
-            <h1>{{ contador }}</h1>
-            <button @click="contador++">+</button>
-            <button @click="contador--">-</button>
+            <contador></contador>
+            <contador></contador>
+            <contador></contador>
         </div>
     </body>
 
     <script src="node_modules/vue/dist/vue.js"></script>
 
     <script>
+        const contador = {
+            template: `
+                <div>
+                    <h1>{{ contador }}</h1>
+                    <button @click="contador++">+</button>
+                    <button @click="contador--">-</button>
+                </div>
+            `,
+            data() {
+                return { contador: 0 };
+            }
+        };
+
         const vm = new Vue({
             el: '#app',
-            data: {
-                contador: 0
+            components: {
+                contador: contador
             }
         });
     </script>
