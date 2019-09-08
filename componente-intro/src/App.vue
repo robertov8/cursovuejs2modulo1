@@ -1,12 +1,9 @@
 <template>
   <div id="app">
     <h1>Contadores</h1>
-    {{ contador }}
-
-    <div>
-      <button @click="contador++">+</button>
-      <button @click="contador--">-</button>
-    </div>
+    <app-contador></app-contador>
+    <app-contador></app-contador>
+    <app-contador></app-contador>
   </div>
 </template>
 
