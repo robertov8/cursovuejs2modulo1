@@ -2,31 +2,34 @@
     <div class="container">
         <h1>Componente Usuário</h1>
         <p>Esse é um componente muito legal!</p>
+        <p>Nome é <strong>{{ nome }}</strong></p>
         <button @click="alterarNome">Alterar nome</button>
 
         <hr>
         <div class="componentes">
-            <app-usuario-info :nome="nome" />
-            <app-usuario-editar />
+            <app-usuario-info
+                    :nome="nome"
+                    @nomeMudou="nome = $event.novo"/>
+            <app-usuario-editar/>
         </div>
     </div>
 </template>
 
 <script>
-import AppUsuarioInfo from './UsuarioInfo'
-import AppUsuarioEditar from './UsuarioEditar'
+    import AppUsuarioInfo from './UsuarioInfo'
+    import AppUsuarioEditar from './UsuarioEditar'
 
-export default {
-    data() {
-        return { nome: 'Pedro Silva' };
-    },
-    methods: {
-        alterarNome() {
-            this.nome = 'Ana Silva';
-        }
-    },
-    components: { AppUsuarioInfo, AppUsuarioEditar }
-}
+    export default {
+        data() {
+            return {nome: 'Pedro Silva'};
+        },
+        methods: {
+            alterarNome() {
+                this.nome = 'Ana Silva';
+            }
+        },
+        components: {AppUsuarioInfo, AppUsuarioEditar}
+    }
 </script>
 
 <style scoped>
