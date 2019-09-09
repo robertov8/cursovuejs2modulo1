@@ -9,6 +9,7 @@
         <div class="componentes">
             <app-usuario-info
                     :nome="nome"
+                    :reiniciarFn="reiniciarNome"
                     @nomeMudou="nome = $event.novo"/>
             <app-usuario-editar/>
         </div>
@@ -26,6 +27,9 @@
         methods: {
             alterarNome() {
                 this.nome = 'Ana Silva';
+            },
+            reiniciarNome() {
+                this.nome = 'Pedro Silva';
             }
         },
         components: {AppUsuarioInfo, AppUsuarioEditar}
