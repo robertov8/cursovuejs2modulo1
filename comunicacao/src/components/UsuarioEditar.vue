@@ -17,7 +17,7 @@
         methods: {
             alterarIdade() {
                 this.idade += 1;
-                barramento.$emit('idadeMudou', this.idade);
+                barramento.alterarIdade(this.idade);
             }
         }
     }
