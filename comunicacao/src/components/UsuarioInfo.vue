@@ -12,6 +12,9 @@
             nome: {
                 type: String,
                 // required: true,
+                // default: function () {
+                //     return Array(10).fill(0).join(',')
+                // },
                 default: 'Anônimo'
             }
         },
