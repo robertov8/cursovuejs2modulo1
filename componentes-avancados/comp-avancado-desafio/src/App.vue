@@ -1,62 +1,67 @@
 <template>
-	<div id="app">
-		<span>
-			<button class="vermelho">Carregar Componente Vermelho</button>
-			<button class="verde">Carregar Componente Verde</button>
-			<button class="azul">Carregar Componente Azul</button>
-		</span>
-		
-		<Vermelho />
-		<Verde />
-		<Azul />
-	</div>
+    <div id="app">
+        <span>
+            <button @click="component = 'Vermelho'" class="vermelho">Carregar Componente Vermelho</button>
+            <button @click="component = 'Verde'" class="verde">Carregar Componente Verde</button>
+            <button @click="component = 'Azul'" class="azul">Carregar Componente Azul</button>
+        </span>
+
+        <Component :is="component">
+            <span>Conteúdo do Componente <strong>{{ component }}</strong></span>
+        </Component>
+    </div>
 </template>
 
 <script>
-import Vermelho from './components/Vermelho.vue'
-import Verde from './components/Verde.vue'
-import Azul from './components/Azul.vue'
+    import Vermelho from './components/Vermelho.vue'
+    import Verde from './components/Verde.vue'
+    import Azul from './components/Azul.vue'
 
-export default {
-	name: 'app',
-	components: { Vermelho, Verde, Azul },
-}
+    export default {
+        name: 'app',
+        data() {
+            return {
+                component: 'Vermelho'
+            };
+        },
+        components: {Vermelho, Verde, Azul},
+    }
 </script>
 
 <style>
-	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
-	}
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
 
-	button {
-		padding: 10px;
-		color: #FFF;
-		font-size: 1.3rem;
-	}
+    button {
+        padding: 10px;
+        color: #FFF;
+        font-size: 1.3rem;
+    }
 
     .caixa {
         color: #FFF;
         font-size: 1.8rem;
         padding: 25px;
-		margin: 10px 0px;
+        margin: 10px 0px;
     }
 
-	.vermelho {
+    .vermelho {
         border: 2px solid red;
         background-color: #f54235;
     }
 
-	.verde {
+    .verde {
         border: 2px solid green;
         background-color: #49b057;
     }
 
-	.azul {
+    .azul {
         border: 2px solid blue;
         background-color: #2594f0;
     }
