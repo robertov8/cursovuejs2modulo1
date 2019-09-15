@@ -1,8 +1,12 @@
 <template>
     <div class="citacao">
-        <slot name="autor"></slot>
-        <slot name="texto"></slot>
+        <slot></slot>
+
         <slot name="fonte"></slot>
+
+        <div class="autor">
+            <slot name="autor"></slot>
+        </div>
     </div>
 </template>
 
@@ -16,5 +20,9 @@
         background-color: rgba(0, 0, 0, .1);
         padding: 25px;
         max-width: 450px;
+    }
+
+    .autor {
+        float: right;
     }
 </style>
