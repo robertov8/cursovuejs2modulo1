@@ -24,6 +24,13 @@
         destroyed() {
             console.log('destroyed');
         },
+        activated() {
+            console.log('activated');
+        },
+        deactivated() {
+            console.log('deactivated');
+        },
+
         data() {
             return {
                 numero: 0,
