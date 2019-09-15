@@ -4,36 +4,42 @@
             <button @click="numero--">&lt;</button>
             <button @click="numero++">&gt;</button>
         </span>
-        {{ numero }} {{ indice }}
+
+        <Citacao :texto="citacoes[indice].texto" />
     </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            numero: 0,
-            citacoes: [{
-                fonte: 'Jornal do Empreendedor',
-                texto: 'Lembre-se sempre que você é absolutamente único. Assim como todos os outros.',
-                autor: 'Margaret Mead'
-            }, { 
-                fonte: 'Frases de Mãe',
-                texto: 'Isso não é um quarto, é um chiqueiro.',
-                autor: 'Roberta'
-            }, {
-                fonte: 'Frases de Pai',
-                texto: 'Vou contar até 3! 1, 2, 2...',
-                autor: 'Gustavo'
-            }]
-        }
-    },
-    computed: {
-        indice() {
-            return Math.abs(this.numero % 3)
+    import Citacao from './Citacao';
+
+    export default {
+        data() {
+            return {
+                numero: 0,
+                citacoes: [{
+                    fonte: 'Jornal do Empreendedor',
+                    texto: 'Lembre-se sempre que você é absolutamente único. Assim como todos os outros.',
+                    autor: 'Margaret Mead'
+                }, {
+                    fonte: 'Frases de Mãe',
+                    texto: 'Isso não é um quarto, é um chiqueiro.',
+                    autor: 'Roberta'
+                }, {
+                    fonte: 'Frases de Pai',
+                    texto: 'Vou contar até 3! 1, 2, 2...',
+                    autor: 'Gustavo'
+                }]
+            }
+        },
+        computed: {
+            indice() {
+                return Math.abs(this.numero % 3)
+            }
+        },
+        components: {
+            Citacao
         }
     }
-}
 </script>
 
 <style scoped>
