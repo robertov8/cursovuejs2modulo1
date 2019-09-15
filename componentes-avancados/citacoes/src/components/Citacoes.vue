@@ -18,6 +18,12 @@
     import Citacao from './Citacao';
 
     export default {
+        created() {
+            console.log('created');
+        },
+        destroyed() {
+            console.log('destroyed');
+        },
         data() {
             return {
                 numero: 0,
