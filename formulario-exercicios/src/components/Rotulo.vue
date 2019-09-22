@@ -8,9 +8,9 @@
 </template>
 
 <script>
-export default {
-    props: ['nome']
-}
+    export default {
+        props: ['nome']
+    };
 </script>
 
 <style scoped>

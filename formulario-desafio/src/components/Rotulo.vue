@@ -24,6 +24,7 @@ export default {
 
     .elemento {
         display: flex;
+        align-items: flex-start;
         align-self: stretch;
         margin: 10px 0px;
     }
