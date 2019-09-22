@@ -37,8 +37,13 @@
                     </span>
                 </Rotulo>
                 <Rotulo nome="Prioridade">
-                    <select name="" id="">
-                        <option></option>
+                    <select v-model="prioridade">
+                        <option
+                            v-for="prioridade in prioridades"
+                            :key="prioridade.codigo"
+                            :value="prioridade.codigo">
+                            {{ prioridade.codigo }} - {{ prioridade.nome }}
+                        </option>
                     </select>
                 </Rotulo>
                 <Rotulo nome="Primeira Reclamação?">
@@ -73,7 +78,7 @@
                     <span>{{ produto }}</span>
                 </Rotulo>
                 <Rotulo nome="Prioridade">
-                    <span>???</span>
+                    <span>{{ prioridade }} - {{ prioridadeNome }} - {{ tipoPrioridade }}</span>
                 </Rotulo>
                 <Rotulo nome="Primeira Reclamação?">
                     <span>???</span>
@@ -98,12 +103,25 @@
                 },
                 mensagem: '',
                 caracteristicas: [],
-                produto: 'web'
+                produto: 'web',
+                prioridade: 2,
+                prioridades: [
+                    { codigo: 1, nome: 'Baixa' },
+                    { codigo: 2, nome: 'Moderada' },
+                    { codigo: 3, nome: 'Alta' },
+                ]
             };
         },
         computed: {
             tipoIdade() {
                 return typeof this.usuario.idade;
+            },
+            tipoPrioridade() {
+                return typeof this.prioridade;
+            },
+            prioridadeNome() {
+                const prioridade = this.prioridades.filter(p => p.codigo === this.prioridade)[0];
+                return prioridade.nome;
             }
         },
         components: {Rotulo, Escolha}
