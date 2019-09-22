@@ -5,7 +5,7 @@
             <form class="painel">
                 <div class="cabecalho">Formulário</div>
                 <Rotulo nome="E-mail">
-                    <input type="text">
+                    <input type="text" v-model="email">
                 </Rotulo>
                 <Rotulo nome="Senha">
                     <input type="password">
@@ -36,10 +36,11 @@
                 <hr>
                 <button>Enviar</button>
             </form>
+
             <div class="painel">
                 <div class="cabecalho">Resultado</div>
                 <Rotulo nome="E-mail">
-                    <span>???</span>
+                    <span>{{ email }}</span>
                 </Rotulo>
                 <Rotulo nome="Senha">
                     <span>???</span>
@@ -73,6 +74,11 @@
 
     export default {
         name: 'app',
+        data() {
+            return {
+                email: ''
+            };
+        },
         components: {Rotulo, Escolha}
     };
 </script>
