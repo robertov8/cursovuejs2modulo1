@@ -1,4 +1,7 @@
 export default {
+    created() {
+        console.log('Created - Usuario Mixin!');
+    },
     data() {
         return {
             fruta: '',

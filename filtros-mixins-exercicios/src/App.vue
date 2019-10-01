@@ -28,6 +28,9 @@
     import Frutas from './Frutas';
 
     export default {
+        created() {
+            console.log('Created - App.vue!');
+        },
         data() {
             return {
                 cpfDoAluno: '60070080090',
