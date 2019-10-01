@@ -24,6 +24,7 @@
 </template>
 
 <script>
+    import frutasMixin from './frutasMixin';
     import Frutas from './Frutas';
 
     export default {
@@ -43,12 +44,7 @@
                 return arr.join('');
             }
         },
-        methods: {
-            add() {
-                this.frutas.push(this.fruta);
-                this.fruta = '';
-            }
-        },
+        mixins: [frutasMixin],
         components: {
             Frutas
         }
