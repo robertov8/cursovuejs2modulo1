@@ -70,10 +70,12 @@
         <b-button @click="adicionarAluno" class="mb-4">Adicionar Aluno</b-button>
         
         <b-list-group>
-            <b-list-group-item
-                v-for="(aluno, index) in alunos"
-                :key="aluno"
-                @click="removerAluno(index)">{{ aluno }}</b-list-group-item>
+            <transition-group name="slide" tag="div">
+                <b-list-group-item
+                        v-for="(aluno, index) in alunos"
+                        :key="aluno"
+                        @click="removerAluno(index)">{{ aluno }}</b-list-group-item>
+            </transition-group>
         </b-list-group>
         
     </div>
@@ -184,12 +186,17 @@
     }
 
     .slide-leave-active {
+        position: absolute;
+        width: 100%;
         animation: slide-out 2s ease;
         transition: opacity 2s;
     }
 
     .slide-enter, .slide-leave-to {
         opacity: 0;
+    }
+    .slide-move {
+        transition: transform 1s;
     }
 
     .caixa {
