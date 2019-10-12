@@ -1,13 +1,19 @@
 <template>
-    <div class="result">
-        
+    <div class="result" :class="{wrong: !result}">
+        <span v-if="result">Resposta Certa! :)</span>
+        <span v-else>Resposta Errada! :(</span>
     </div>
 </template>
 
 <script>
-export default {
-    
-}
+    export default {
+        props: {
+            result: {
+                type: Boolean,
+                required: true
+            }
+        }
+    };
 </script>
 
 <style>
@@ -18,23 +24,23 @@ export default {
         width: 70%;
         border-radius: 20px;
         font-size: 5.5rem;
-
+        
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: #89c454;
         color: #30863d;
     }
-
+    
     .result hr {
         color: #FFF;
     }
-
+    
     .result.wrong {
         background-color: #f05250;
         color: #bb2814;
     }
-
+    
     .result button {
         outline: none;
         align-self: center;
@@ -44,8 +50,8 @@ export default {
         background-color: #FFF;
         color: #30863d;
         font-weight: 600;
-    } 
-
+    }
+    
     .result.wrong button {
         color: #bb2814;
     }
