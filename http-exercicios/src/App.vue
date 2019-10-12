@@ -7,14 +7,14 @@
 <script>
     export default {
         async created() {
-            /*console.log('exec!!!');
+            console.log('exec!!!');
             
             const response = await this.$http.post('usuarios.json', {
                 nome: 'Maria',
                 email: 'maria_maria@gmail.com'
             });
     
-            console.log(response);*/
+            console.log(response);
         }
     };
 </script>
