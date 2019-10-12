@@ -65,6 +65,8 @@
                 this.usuario.email = '';
             },
             async obterUsuario() {
+                this.$http.defaults.headers.common['Authorization'] = 'abc123';
+                
                 const response = await this.$http.get('usuarios.json');
                 this.usuarios = response.data;
                 console.log(response);
