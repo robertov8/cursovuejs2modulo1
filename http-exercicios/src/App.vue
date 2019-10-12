@@ -40,7 +40,10 @@
                 <b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
                     <strong>ID: </strong> {{ id }} <br>
                     <strong>Nome: </strong> {{ usuario.nome }} <br>
-                    <strong>E-mail: </strong> {{ usuario.email }}
+                    <strong>E-mail: </strong> {{ usuario.email }} <br>
+                    
+                    <b-button variant="warning" size="lg" @click="carregar(id)">Carregar</b-button>
+                    <b-button variant="danger" size="lg" @click="excluir(id)" class="ml-2">Excluir</b-button>
                 </b-list-group-item>
             </b-list-group>
         </b-card>
@@ -51,6 +54,7 @@
     export default {
         data() {
             return {
+                id: null,
                 usuarios: [],
                 usuario: {
                     nome: '',
@@ -58,30 +62,47 @@
                 }
             }
         },
+        created() {
+            this.obterUsuario();
+            // console.log('exec!!!');
+            //
+            // const response = await this.$http.post('usuarios.json', {
+            //     nome: 'Maria',
+            //     email: 'maria_maria@gmail.com'
+            // });
+            //
+            // console.log(response);
+        },
         methods: {
-            async salvar() {
-                await this.$http.post('usuarios.json', this.usuario);
+            limpar() {
                 this.usuario.nome = '';
                 this.usuario.email = '';
+                this.id = null;
+            },
+            carregar(id) {
+                this.id = id;
+                this.usuario = { ...this.usuarios[id] };
+            },
+            async excluir(id) {
+                this.$http.delete(`/usuarios/${id}.json`);
+                await this.obterUsuario();
+            },
+            async salvar() {
+                const method = this.id ? 'patch' : 'post';
+                const url = this.id ? `/${this.id}.json` : '.json';
+                
+                await this.$http[method](`/usuarios${url}`, this.usuario);
+                
+                this.limpar();
+                this.obterUsuario();
             },
             async obterUsuario() {
                 this.$http.defaults.headers.common['Authorization'] = 'abc123';
                 
                 const response = await this.$http.get('usuarios.json');
                 this.usuarios = response.data;
-                console.log(response);
             }
         }
-        // async created() {
-        //     console.log('exec!!!');
-        //
-        //     const response = await this.$http.post('usuarios.json', {
-        //         nome: 'Maria',
-        //         email: 'maria_maria@gmail.com'
-        //     });
-        //
-        //     console.log(response);
-        // }
     };
 </script>
 
