@@ -22,7 +22,27 @@
             <b-button
                 @click="salvar"
                 size="lg"
-                variant="primary">Salvar</b-button>
+                variant="primary">
+                Salvar
+            </b-button>
+            
+            <b-button
+                class="ml-2"
+                @click="obterUsuario"
+                size="lg"
+                variant="success">
+                Obter Usuários
+            </b-button>
+    
+            <hr>
+            
+            <b-list-group>
+                <b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
+                    <strong>ID: </strong> {{ id }} <br>
+                    <strong>Nome: </strong> {{ usuario.nome }} <br>
+                    <strong>E-mail: </strong> {{ usuario.email }}
+                </b-list-group-item>
+            </b-list-group>
         </b-card>
     </div>
 </template>
@@ -31,6 +51,7 @@
     export default {
         data() {
             return {
+                usuarios: [],
                 usuario: {
                     nome: '',
                     email: ''
@@ -42,6 +63,11 @@
                 await this.$http.post('usuarios.json', this.usuario);
                 this.usuario.nome = '';
                 this.usuario.email = '';
+            },
+            async obterUsuario() {
+                const response = await this.$http.get('usuarios.json');
+                this.usuarios = response.data;
+                console.log(response);
             }
         }
         // async created() {
