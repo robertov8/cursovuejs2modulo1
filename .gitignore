@@ -12,4 +12,4 @@ test/
 
 .idea
 node_modules
-
+**/env.js
