@@ -48,10 +48,30 @@
             @leave-cancelled="">
             <div v-if="exibir2" class="caixa"></div>
         </transition>
+
+        <hr>
+        
+        <div class="mb-4">
+            <b-button
+                    class="mr-2"
+                    variant="primary"
+                    @click="componentSelecionado = 'AlertaInfo'">Info</b-button>
+            <b-button
+                    variant="warning"
+                    @click="componentSelecionado = 'AlertaAdvertencia'">Advertência</b-button>
+        </div>
+        
+        <transition name="fade" mode="out-in">
+            <component :is="componentSelecionado" class="mt-2"/>
+        </transition>
+        
     </div>
 </template>
 
 <script>
+    import AlertaAdvertencia from './AlertaAdvertencia';
+    import AlertaInfo from './AlertaInfo';
+    
     export default {
         data() {
             return {
@@ -59,7 +79,8 @@
                 exibir: false,
                 exibir2: true,
                 tipoAnimacao: 'fade',
-                larguraBase: 0
+                larguraBase: 0,
+                componentSelecionado: 'AlertaInfo'
             };
         },
         methods: {
@@ -102,6 +123,9 @@
             // leaveCancelled(el) {
             //     console.log('leaveCancelled');
             // }
+        },
+        components: {
+            AlertaAdvertencia, AlertaInfo
         }
     }
 </script>
