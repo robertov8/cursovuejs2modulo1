@@ -6,7 +6,7 @@
 
         <b-button variant="primary" class="mb-4" @click="exibir = !exibir">Mostrar Mensagem</b-button>
 
-        <transition name="fade" appear>
+        <!--<transition name="fade" appear>
             <b-alert variant="info" show v-if="exibir">{{ msg }}</b-alert>
         </transition>
 
@@ -15,6 +15,19 @@
         </transition>
 
         <transition enter-active-class="animated bounce" leave-active-class="animated shake">
+            <b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
+        </transition>-->
+
+        <hr>
+
+        <b-select v-model="tipoAnimacao" class="mb-4">
+            <option value="fade">Fade</option>
+            <option value="slide">Slide</option>
+        </b-select>
+
+        <br>
+
+        <transition :name="tipoAnimacao">
             <b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
         </transition>
     </div>
@@ -25,7 +38,8 @@
         data() {
             return {
                 msg: 'Uma mensagem de informação para o usuário!',
-                exibir: false
+                exibir: false,
+                tipoAnimacao: 'fade'
             };
         }
     }
