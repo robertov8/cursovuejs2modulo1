@@ -38,9 +38,10 @@
             }
         },
         methods: {
-            salvar() {
-                console.log(this.usuario.nome);
-                console.log(this.usuario.email);
+            async salvar() {
+                await this.$http.post('usuarios.json', this.usuario);
+                this.usuario.nome = '';
+                this.usuario.email = '';
             }
         }
         // async created() {
