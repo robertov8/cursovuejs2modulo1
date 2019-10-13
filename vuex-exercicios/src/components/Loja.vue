@@ -11,29 +11,29 @@
 </template>
 
 <script>
-
-export default {
-    data() {
-        return {
-            sequencia: 1,
-            quantidade: 1,
-            preco: 9.99,
-        }
-    },
-    methods: {
-        adicionar() {
-            const produto = {
-                id: this.sequencia,
-                nome: `Produto ${this.sequencia}`,
-                quantidade: this.quantidade,
-                preco: this.preco
+    
+    export default {
+        data() {
+            return {
+                sequencia: 4,
+                quantidade: 1,
+                preco: 9.99,
+            };
+        },
+        methods: {
+            adicionar() {
+                const produto = {
+                    id: this.sequencia,
+                    nome: `Produto ${this.sequencia}`,
+                    quantidade: this.quantidade,
+                    preco: this.preco
+                };
+                this.sequencia++;
+                
+                this.$store.state.produtos.push(produto);
             }
-            this.sequencia++
-            // eslint-disable-next-line
-            console.log(produto)
         }
-    }
-}
+    };
 </script>
 
 <style>
@@ -41,11 +41,11 @@ export default {
         display: flex;
         justify-content: center;
     }
-
+    
     .loja > * {
         margin: 0px 10px;
     }
-
+    
     input {
         font-size: 2rem;
         width: 90px;
