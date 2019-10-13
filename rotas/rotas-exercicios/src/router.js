@@ -2,11 +2,16 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Inicio from './components/Inicio';
 
-import Usuario from './components/usuario/Usuario';
-import UsuarioLista from './components/usuario/UsuarioLista';
-import UsuarioDetalhe from './components/usuario/UsuarioDetalhe';
-import UsuarioEditar from './components/usuario/UsuarioEditar';
+// import Usuario from './components/usuario/Usuario';
+// import UsuarioLista from './components/usuario/UsuarioLista';
+// import UsuarioDetalhe from './components/usuario/UsuarioDetalhe';
+// import UsuarioEditar from './components/usuario/UsuarioEditar';
 import Menu from './components/template/Menu';
+
+const Usuario = () => import(/* webpackChunkName: "usuario" */'./components/usuario/Usuario');
+const UsuarioLista = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioLista');
+const UsuarioDetalhe = () => import('./components/usuario/UsuarioDetalhe');
+const UsuarioEditar = () => import('./components/usuario/UsuarioEditar');
 
 Vue.use(Router);
 
