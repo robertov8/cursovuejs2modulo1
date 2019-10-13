@@ -33,5 +33,8 @@ export default new Router({
             { path: ':id', props: true, component: UsuarioDetalhe },
             { path: ':id/editar', props: true, name: 'usuario.editar', component: UsuarioEditar }
         ]
+    }, {
+        path: '/redirecionar',
+        redirect: '/usuario'
     }]
 });
