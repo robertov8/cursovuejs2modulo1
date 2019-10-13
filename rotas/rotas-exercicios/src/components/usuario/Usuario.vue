@@ -4,9 +4,7 @@
     
         <hr>
         
-        <p>
-            <strong>Código:</strong> {{ id }}
-        </p>
+        <router-view></router-view>
         
         <button sucesso @click="irParaInicio">Voltar</button>
     </div>
@@ -15,22 +13,11 @@
 <script>
     export default {
         name: 'Usuario',
-        props: ['id'],
-        // data() {
-        //     return {
-        //         id: this.$route.params.id
-        //     };
-        // },
         methods: {
             irParaInicio() {
                 this.$router.push('/');
             }
-        },
-        // watch: {
-        //     $route(to) {
-        //         this.id = to.params.id;
-        //     }
-        // }
+        }
     };
 </script>
 
