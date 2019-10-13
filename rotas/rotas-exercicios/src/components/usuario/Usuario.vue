@@ -15,7 +15,8 @@
         name: 'Usuario',
         methods: {
             irParaInicio() {
-                this.$router.push('/');
+                // this.$router.push('/');
+                this.$router.push({ name: 'inicio' });
             }
         }
     };
