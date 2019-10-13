@@ -2,6 +2,13 @@
     <div id="app" class="container">
         <h1>HTTP com Axios</h1>
         
+        <b-alert
+            show
+            dismissible
+            v-for="mensagem in mensagens"
+            :key="mensagem.texto"
+            :variant="mensagem.tipo">{{ mensagem.texto }}</b-alert>
+        
         <b-card>
             <b-form-group label="Nome:">
                 <b-form-input
@@ -55,6 +62,7 @@
         data() {
             return {
                 id: null,
+                mensagens: [],
                 usuarios: [],
                 usuario: {
                     nome: '',
@@ -75,16 +83,23 @@
         },
         methods: {
             limpar() {
+                this.id = null;
                 this.usuario.nome = '';
                 this.usuario.email = '';
-                this.id = null;
+                this.mensagens = [];
             },
             carregar(id) {
                 this.id = id;
                 this.usuario = { ...this.usuarios[id] };
             },
             async excluir(id) {
-                this.$http.delete(`/usuarios/${id}.json`);
+                this.$http.delete(`/usuarios/${id}.json`)
+                    .catch(_ => {
+                        this.mensagens.push({
+                            texto: 'Problema para excluir!',
+                            tipo: 'danger'
+                        });
+                    });
                 await this.obterUsuario();
             },
             async salvar() {
@@ -95,6 +110,10 @@
                 
                 this.limpar();
                 this.obterUsuario();
+                this.mensagens.push({
+                    texto: 'Operação realizada com sucesso!',
+                    tipo: 'success'
+                });
             },
             async obterUsuario() {
                 this.$http.defaults.headers.common['Authorization'] = 'abc123';
