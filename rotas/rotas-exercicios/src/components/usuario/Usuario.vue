@@ -15,21 +15,22 @@
 <script>
     export default {
         name: 'Usuario',
-        data() {
-            return {
-                id: this.$route.params.id
-            };
-        },
+        props: ['id'],
+        // data() {
+        //     return {
+        //         id: this.$route.params.id
+        //     };
+        // },
         methods: {
             irParaInicio() {
                 this.$router.push('/');
             }
         },
-        watch: {
-            $route(to) {
-                this.id = to.params.id;
-            }
-        }
+        // watch: {
+        //     $route(to) {
+        //         this.id = to.params.id;
+        //     }
+        // }
     };
 </script>
 
