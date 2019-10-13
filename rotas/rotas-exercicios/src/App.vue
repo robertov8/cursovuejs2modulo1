@@ -1,19 +1,19 @@
 <template>
-	<div id="app">
-		<h1>Rotas com VueRouter</h1>
-	</div>
+    <div id="app">
+        <h1>Rotas com VueRouter</h1>
+        
+        <router-view/>
+    </div>
 </template>
 
 <script>
-export default {
-	
-}
+    export default {};
 </script>
 
 <style>
-	#app {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+    #app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
