@@ -10,7 +10,12 @@
         <router-link
             tag="button"
             primario
-            :to="{name: 'usuario.editar', params: { id }, query: { completo: false, lingua: 'pt' }}">
+            :to="{
+                name: 'usuario.editar',
+                params: { id },
+                query: { completo: false, lingua: 'pt' },
+                hash: '#rodape'
+            }">
             Editar
         </router-link>
     </div>
