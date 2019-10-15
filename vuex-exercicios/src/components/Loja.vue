@@ -17,8 +17,6 @@
         data() {
             return {
                 sequencia: 4,
-                quantidade: 1,
-                preco: 9.99,
             };
         },
         methods: {
@@ -39,6 +37,14 @@
                 // this.$store.commit('adicionarProduto', produto);
                 // this.$store.dispatch('adicionarProduto', produto)
                 this.adicionarProduto(produto);
+            },
+        },
+        computed: {
+            quantidade() {
+                return this.$store.state.quantidade;
+            },
+            preco() {
+                return this.$store.state.preco;
             }
         }
     };
