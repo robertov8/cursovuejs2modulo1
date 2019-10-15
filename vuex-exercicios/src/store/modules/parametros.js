@@ -1,6 +1,6 @@
 export default {
     state: {
-        quantidade: 0,
+        quantidade: 1,
         preco: 9.98
     },
     mutations: {
